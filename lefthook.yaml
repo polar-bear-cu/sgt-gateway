@@ -1,0 +1,12 @@
+commit-msg:
+  commands:
+    conventional:
+      run: sh scripts/commit-msg.sh {1}
+
+pre-push:
+  parallel: false
+  commands:
+    build:
+      run: make build
+    config:
+      run: make check
