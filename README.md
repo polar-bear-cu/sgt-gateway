@@ -4,7 +4,6 @@ Nginx reverse proxy หน้าเดียวของระบบ route `/api
 
 - listen `:80` (compose publish `8000:80`)
 - Docker DNS - เรียก service ด้วยชื่อ container (`auth-service`, `user-service`, ...)
-- repo นี้มีแค่ nginx config + image. compose ที่ประกอบทั้งระบบอยู่ `sgt-deploy`
 
 ### Routes
 
@@ -13,7 +12,7 @@ Nginx reverse proxy หน้าเดียวของระบบ route `/api
 /api/v1/users/           -> user-service:8080
 /api/v1/subscriptions    -> subscription-service:8080
 /api/v1/reports/         -> report-service:8080
-/healthz                 -> nginx ตอบเอง {"status":"ok"}
+/healthz
 /                        -> frontend:80
 ```
 
@@ -37,10 +36,8 @@ make build
 make run       # publish 8000:80
 ```
 
-รันเดี่ยว upstream (`auth-service` ฯลฯ) resolve ไม่ได้ ใช้จริงรันผ่าน compose ใน `sgt-deploy`
-
 ### Config check
 
 ```terminal
-make check     # docker run --entrypoint nginx <image> -t
+make check
 ```
