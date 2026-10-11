@@ -11,7 +11,7 @@ Nginx reverse proxy หน้าเดียวของระบบ route `/api
 /api/v1/auth/            -> auth-service:8080
 /api/v1/subscriptions    -> subscription-service:8080
 /api/v1/reports/         -> report-service:8080
-/api/v1/notifications    -> noti-service:8080
+/api/v1/notifications    -> noti-service:8080/notifications (ตัด /api/v1 ออกก่อนส่ง)
 /user.v1.UserService/    -> envoy:8081 (grpc-web -> user-service)
 /healthz
 /                        -> frontend:80
